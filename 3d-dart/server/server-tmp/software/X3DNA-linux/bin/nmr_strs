@@ -1,0 +1,82 @@
+#!/usr/bin/perl -w
+
+#
+#         by Xiang-Jun Lu, October 2001
+
+if (@ARGV == 3) {
+    $program = "analyze";
+    $inpfile = $ARGV[0];
+    $n1 = $ARGV[1];
+    $n2 = $ARGV[2];
+} elsif (@ARGV == 4 && (uc($ARGV[0]) =~ /-CEHS/)) {
+    $program = "cehs";
+    $inpfile = $ARGV[1];
+    $n1 = $ARGV[2];
+    $n2 = $ARGV[3];
+} else {
+    print <<NMR_STRS_USAGE;
+===========================================================================
+SYNOPSIS
+    nmr_strs [-cehs] INPFILE N1 N2
+DESCRIPTION
+    Processes multiple nucleic acid structures determined by NMR. This script
+    works in the same way as "mstack2img". Check Examples/NMR for an example.
+EXAMPLES
+    nmr_strs 230d.inp 1 7
+AUTHOR
+    Xiang-Jun Lu in the Laboratory of Wilma K. Olson at Rutgers Univ.
+    Check URL: http://rutchem.rutgers.edu/~xiangjun/3DNA/
+    Report bugs to <xiangjun\@rutchem.rutgers.edu>
+===========================================================================
+NMR_STRS_USAGE
+    die "Usage: \n";
+}
+
+open(FINP, $inpfile) || die "Can't open $inpfile for reading: $!\n";
+
+# DIRECTORY CONTAINING 3DNA BINARIES: change this line as appropriate
+$BDIR = $ENV{X3DNA};
+if ($BDIR) {                # X3DNA
+    $BDIR =~ s/.$// if (substr($BDIR, -1) eq '/');
+    $X3DNA_BIN = "$BDIR/bin";
+} else {
+    $X3DNA_BIN = "$ENV{HOME}/X3DNA/bin"; # define it manually
+}
+
+$n = 0;                                # number of lines in input file
+while (<FINP>) {
+    $inpline[$n++] = $_;
+}
+close(FINP);
+
+chop($inpline[0]);                # PDB file name
+chop($inpline[1]);                # structure prefix
+
+for ($i = $n1; $i <= $n2; $i++) {
+    open(FPDB, $inpline[0]) || die "Can't open $inpline[0] for reading: $!\n";
+    open(FSTR, ">tmpstri") || die "Can't open tmpstri for writing: $!\n";
+
+    while (<FPDB>) {
+        if (/^MODEL[ \t]+$i / .. /^ENDMDL/) {
+            print FSTR;
+        }
+    }
+
+    close(FPDB);
+    close(FSTR);
+
+    if (-z "tmpstri") {
+        print "Structure \#$i does not exist\n";
+    } else {                    # generate input for each structure
+        open(FTMP, ">tmpfile") || die "Can't open tmpfile for writing: $!\n";
+        print FTMP "tmpstri\n"; # ith structure PDB file name
+        printf FTMP "$inpline[1]%4.4d.out\n", $i; # output file name
+        for ($j = 2; $j < $n; $j++) {
+            print FTMP $inpline[$j];
+        }
+        close(FTMP);
+
+        print "\n\n =========== Processing structure \#$i ===========\n";
+        system "$X3DNA_BIN/$program tmpfile";
+    }
+}

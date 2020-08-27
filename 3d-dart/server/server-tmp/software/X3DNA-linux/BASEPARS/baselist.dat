@@ -1,0 +1,209 @@
+# The following list gives the correspondence between a uncommon base with
+# its canonical counterparts: A, C, G, I, T and U. It is based on an
+# analysis of all the NDB entries and a careful check of each residue given
+# here, and is intended to make analyzing nucleic acid structures with
+# unusual base residues easier.
+
+# New base residues can be added to this list following the same format.
+
+# The format of this list is: three-letter residue name as in a PDB file
+# followed by a one-letter, one line per pair. Those with less the
+# three-letter will be prepended with space. For each base X here, there are
+# should be a file name Atomic_X.pdb in your current directory or $X3DNA.
+
+# An empty line or a line STARTING with # is a comment.
+
+# common residues: in upper case
+  A     A
+ADE     A
+ DA	    A
+  C     C
+CYT     C
+ DC	    C
+  G     G
+GUA     G
+ DG	    G
+  I     I
+INO     I
+  T     T
+THY     T
+ DT	    T
+  U     U
+URA     U
+
+# The rare PSU in RNA is named P, and there is a Atomic_P.pdb file.
+PSU     P      # C1* connected to C5 instead of N1
+
+# This following list is in alphabetical order and in lower case
+  N     u
+  S     t      # S4 connected to C4
+ +A     a
+ +C     c
+ +G     g
+ +I     i
+ +T     t
+ +U     u
+ PU     a      # Two C connected to N6
+ YG     g      # C3 to N3, C11/C12 to N2/N1 to form a 5-member ring
+1AP     g      # N6 not O6
+1MA     a      # C connected to N1
+1MG     g      # C connected to N1
+2DA     a
+2DT     t
+2MA     a      # C connected to C2
+2MG     g      # C connected to N2
+4SC     c      # S4* instead of O4* for the sugar, C to C5
+4SU     u      # S4 instead O4 of connected to C4
+5IU     u      # I connected to C5   
+5MC     c      # C connected to C5
+5MU     u      # C connected to C5, could be T
+5NC     c      # N5 instead of C5 in the ring
+6MP     a      
+7MG     g      # C connected to N7
+A23     a
+AD2     a
+AET     a      # C/CON connected to N6
+AMD     a      
+AMP     a
+APN     a
+ATP     a
+AZT     t
+CCC     c
+CMP     a
+CPN     c
+DA5		a
+DA3		a
+DAD     a
+DC5		c
+DC3		c
+DCT     c
+DDG     g
+DG3     g
+DG5		g
+DHU     u      # non-planar
+DOC     c
+DT5		t
+DT3		t
+EDA     a      # C10/C11 connected to N1/N6 to form a 5-member ring
+G7M     g      # C connected to N7
+GDP     g
+GNP     g
+GPN     g
+GTP     g
+GUN     g
+H2U     u      # non-planar
+HPA     a
+IPN     t      # I connected to C5
+M2G     g      # Two Cs connected to N2
+MGT     g      # C connected to N7
+MIA     a      # S connected to C2, C to N6
+OMC     c
+OMG     g
+OMU     u
+ONE     u      # No O2 atom
+P2U     p      # C1* connected to C5 instead of N1
+PGP     g
+PPU     a      # Two Cs connected to N6
+PRN     a      # No N6 atom
+PST     t
+QSI     a
+QUO     g      # C7 instead of N7
+RIA     a
+SAH     a
+SAM     a
+T23     t
+T6A     a      # C connected to N6
+TAF     t
+TLC     t
+TPN     t
+TSP     t
+TTP     t
+UCP     u
+VAA     a
+YYG     g      # C11/C12 connected to N1/N1 to form a 5-member ring
+70U     u      # tr0003
+12A     a
+2MU     u
+127	u      # ad0011
+125	u      # ad0012
+126	u      # ad0014
+MEP	u      # ad0013
+TLN	u      # ad0020
+ADP	a      # pd0181
+TTE	t      # pd0196
+PYO	u      # pr0040: missing O4
+SUR	u      # pr0043: O2 to S2
+PSD	a      # pr0057
+S4U	u      # pr0059: O4 to S4
+CP1	c      # up0001
+TP1	t      #   up0001
+NEA	a      # pd0188
+GCK     c      # ad0025
+ CH     c      # pdb1kos
+EDC     g      # pdb1b60 ======> not a common base> judged as Y
+DFC     c      # pdb1fv7
+DFG     g      #       pdb1fv7
+DRT     t      # pdb1fv8
+2AR     a      # pdb1fyi
+8OG     g      #       pdb1fyi
+ IG     g      # pdb1g3a: swap N2 and O6
+ IC     c      #       pdb1g3a: swap O2 and N4
+IGU     g      # pdb1be5
+IMC     c      # pdb1be5
+GAO     g      # pdb1ho6
+UAR     u      #       pdb1ho6
+CAR     c      #       pdb1ho6
+PPZ     a      # pdb1i5v
+M1G     g      # pdb1k29
+ABR     a      # pdb1k5e
+ABS     a      # pdb1k5f
+S6G     g      # pdb1kb1
+HEU     u      # pdb1kxs
+  P     g      # pdb1lae
+DNR     c      # pdb1laq
+MCY     c      # pdb1a83
+TCP     t      # pdb1ac3
+LGP     g      # pdb1ac9
+GSR     g      # pdb1af1
+  X     g      # pdb1ag5
+  R     a      # pdb1agk
+  Y     a      # pdb1ago
+  E     a      # pdb1agu
+GSS     g      # pdb1ap1
+THX     t      # pdb1aul
+6CT     t      # pdb1dau
+TEP     g      # pdb1eht
+GN7     g      # pdb1gn7
+FAG     g      # pdb1hm1
+PDU     u      # pdb1p3x
+MA6     a      # pdb1wts
+UMP     u      # pdb229d
+ SC     c      # pdb8psh
+ GS     g      #        pdb8psh
+ TS     t      #        pdb8psh
+ AS     a      #        pdb8psh
+ATD     t      # pdb1bx5
+T3P     t      # pdb1c2q
+5AT     t      # pdb1c95
+MMT     t      # pdb1cx5
+SRA     a      # pdb1d0t
+6HG     g      # pdb1ejz
+6HC     c      #        pdb1ejz
+6HT     t      #        pdb1ejz
+6HA     a      #        pdb1ejz
+55C     c      # pdb1el2
+U8U     u      # pdb1fl8
+BRO     u      # pdb344d
+BRU     u      # pdb1cs7
+5IT     u      # pdb1a6y
+ADI     a      # pdb1jx4
+5CM     c      # pdb1bsu
+IMP     g      #        pdb1bsu
+THM     t      # pdb1mht
+URI     u      # pdb1i5l
+AMO     a      # pdb1il2
+FHU     p      # pdb1k8w: C1' connected to C5, not N1
+TSB     a      # pdb1kog
+CMR     c      # 1k1r
+RMP     a      #       1k1r 
+SMP     a      # 1k1h

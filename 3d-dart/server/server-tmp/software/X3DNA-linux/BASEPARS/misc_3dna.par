@@ -1,0 +1,9 @@
+4.0 0.0 ON A1 # upper H-bond length limits/atoms, alternative location
+15.0          # max. distance between paired base origins (FIND_PAIR)
+2.5           # max. vertical distance between paired base origins (FIND_PAIR)
+65.0          # max. angle between paired bases [0-90] (FIND_PAIR)
+4.5           # MIN. distance between RN9/YN1 atoms (FIND_PAIR)
+7.5           # max. distance criterion for helix break (FIND_PAIR)
+0.6           # r7 criterion to decide if a helix is curved
+3.2           # r8 H-bond distance for water molecules with base N/O atoms
+4.5           # r9 maximum O3'--P distance for linkage (REBUILD)

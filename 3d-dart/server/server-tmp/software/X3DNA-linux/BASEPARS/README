@@ -1,0 +1,77 @@
+[1] Atomic_?.pdb (? = A, C, G, T or U) 
+
+      Default standard residue geometries used by 3DNA for analyzing and
+      rebuilding full atomic nucleic acid structures in PDB format.
+		  
+      Under subdirectory ATOMIC, there are four sets of standard residue
+      geometry files, ADNA_?.pdb, BDNA_?.pdb, NDB96_?.pdb and RNA_?.pdb.
+      The base geometries by Clowney et al. (1996) are used and were
+      downloaded from the NDB archive. NDB96 set includes just base and C1'
+      atoms, without sugar-phosphate backbone. ADNA uses C3'-endo
+      sugar-backbone conformation as defined by Arnott's fiber studies, but
+      with a chi torsion angle of -160 degrees, average of high resolution
+      single crystal X-ray oligonucleotide structures. RNA set is the same
+      as ADNA except for an additional O2' atom for each residue. BDNA set
+      is similarly defined as ADNA except for the -110 degrees chi torsion
+      angle.
+
+      NDB96 set is the default. To use another set, simply copy them to
+      overwrite the corresponding Atomic_?.pdb. A utility program,
+      "cp_std", can do this automatically for you. You can also choose other
+      residue geometries using the utility program "std_base".
+
+[2] Block_BP.alc defines the default base-pair rectangular block. It has
+      a size of [10 A (long) -by- 4.5 A (wide) -by- 0.5 A (thick)] and is in
+      ALCHEMY format. Is is used for the Calladine-Drew style schematic
+      presentation of DNA structures.
+    Block_R.alc is for the purine base [4.5 -by- 4.5 -by- 0.5]
+    Block_Y.alc is for the pyrimidine base [3.0 -by- 4.5 -by- 0.5]
+
+      Under subdirectory BLOCK, there six block geometry files. Block_M.alc
+      has half the size of BLOCK_BP.alc, and can be used if you would like
+      the two blocks consisting a base-pair to be of the same size.
+      Block_Ms.alc slightly smaller in length than BLOCK_M.alc to avoid
+      possible overlaps in a compressed base-pair (i.e. with negative
+      stretch). The blocks do not necessarily to be rectangular, as shown in
+      Block_R_nr.alc.
+
+[3] Pxyz.dat xyz coordinates of phosphorus atoms with regard to the middle
+      dinucleotide reference frame. Four sets were defined, corresponding to
+      average values in high resolution A- and B-DNA crystal structures,
+      their mean value and TA-DNA. Users can add on new set following the
+      format. This file is used by "rebuild" for generating DNA structures
+      with only base and phosphorus atoms.
+
+    PxyzH.dat is the same as above except the coordinates are given in the
+      middle helical frames.
+
+[4] fig_image.par parameters defining style of the generated XFIG files,
+      which can be edited by users to suit their needs.
+
+[5] ps_image.par parameters defining style of the generated PS files, which
+      can be edited by users to suit their needs.
+
+[6] baselist.dat: a comprehensive list of currently known base residues and
+    their standard counterpart. It makes analysis of unusual DNA and RNA
+    structures straightforward
+
+[7] misc_3dna.par: geometric parameters for identifying base-pairs and
+    locating helical regions. Mainly used by "find_pair".
+
+
+[8] my_header.r3d: Sample header file for Raster3D output
+    raster3d.par: various parameters for Raster3d output
+
+[9] trans_pep.pdb & trans_pep.alc: trans peptide unit for drawing peptide
+    block in protein structures, in the same way as basepair blocks.
+
+[10] Directory RNA_BASES contains the standard bases for calculating the
+     authentic "RNA" base-pair parameters (use "cehs" with "-r" option) of
+     Babcock and Olson's. Copy these rAtomic_?.pdb files to your current
+     directory or directly under BASEPARS to make them known to 3DNA.
+
+[11] col_chain.dat: DNA, protein and ligand color definition. Colors must
+     match those in col_mname.dat (164 color names defined by MolScript).
+     This file is used my "xmrimg" to generate block + ribbon images.
+     --------------------------------------------------------------------------
+                 Xiang-Jun Lu <xiangjun@rutchem.rutgers.edu>, July 2002

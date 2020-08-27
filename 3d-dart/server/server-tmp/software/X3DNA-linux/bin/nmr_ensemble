@@ -1,0 +1,143 @@
+#!/usr/bin/perl -w
+use Getopt::Std;                # for easy command-line options processing
+use File::Copy;                 # File copy
+
+# Command line option processing
+getopts("cdrb:e:s:i:");
+$opt_d ||= 0;                   # if to display the image
+$opt_c ||= 0;                   # if just to clean up temporary files
+$opt_r ||= 0;                   # best representative model
+
+$opt_b ||= 1;                   # NMR beginning model #
+$opt_b =~ s/=//;
+$opt_b = 1 if ($opt_b <= 0);
+
+$MAX_NMR_MODEL = 100000;        # very unlikely to be passed
+$opt_e ||= $MAX_NMR_MODEL;                   # NMR ending model #
+$opt_e =~ s/=//;
+$opt_e = $MAX_NMR_MODEL if ($opt_e <= 0);
+
+if ($opt_b > $opt_e) {
+    print "Beginning no. $opt_b > ending no. $opt_e: swap them\n";
+    ($opt_b, $opt_e) = ($opt_e, $opt_b);
+}
+
+$opt_s ||= 0;                   # set scale factor: -s=NUM or -s NUM
+$opt_s =~ s/=//;
+$opt_s = 0 if ($opt_s < 0);
+
+$opt_i ||= 0;                   # output image name
+$opt_i =~ s/=//;
+
+# DIRECTORY CONTAINING 3DNA BINARIES: change this line as appropriate
+$BDIR = $ENV{X3DNA};
+if ($BDIR) {                # X3DNA
+    $BDIR =~ s/.$// if (substr($BDIR, -1) eq '/');
+    $X3DNA_BIN = "$BDIR/bin";
+} else {
+    $X3DNA_BIN = "$ENV{HOME}/X3DNA/bin"; # change this line as necessary
+}
+
+system("$X3DNA_BIN/dcmnfile -n");
+die "\n" if ($opt_c);  # file clean up
+
+if (@ARGV != 1) {
+    print <<NMR_USAGE;
+===========================================================================
+SYNOPSIS
+    nmr_ensemble [OPTION]... NMR_PDBFILE
+DESCRIPTION
+    Generates a schematic image which combines base block representation
+    with protein ribbon for an NMR ensemble. Users need to have MolScript,
+    Raster3D and ImageMagick properly installed on their system.
+        -d   display the generated image using "display" of ImageMagick
+        -c   clean up temporary common files
+        -r   just draw the best representative (or #1) model
+        -b[=]#      beginning NMR model number (default: 1)
+        -e[=]#      ending NMR model number (default: all models)
+        -s[=]NUM    set scale factor for the image
+        -i[=]IMAGE  set image file name (default: t.jpg)
+EXAMPLES
+    nmr_ensemble -d -i=pdb230d.jpg pdb230d.ent
+===========================================================================
+NMR_USAGE
+    die "\n";
+}
+
+$pdbfile = $ARGV[0];
+die "File <$pdbfile> does not exist!\n" if (not -e $pdbfile);
+
+# define a subroutine to extract the structure number
+$strname = "str_selected";
+sub nmr_strid {
+    open(FINP, $strname) || die "Can't open file <$strname> for reading: $!\n";
+    $strnum = 0;
+    while (<FINP>) {
+        if (/Model selected \#(\d+)/) {
+            $strnum = $1;
+            last;
+        } elsif (/not found in file /) {
+            last;
+        }
+    }
+    close(FINP);
+    return $strnum;
+}
+
+# Get the best representative model (or 1st model) of the ensemble
+system("$X3DNA_BIN/ex_str -nmrb $pdbfile best_str 2> $strname");
+$bstr_num = nmr_strid();
+die "PDB file <$pdbfile> contains no NMR models!\n" if ($bstr_num == 0);
+
+print "Process the best representative NMR model <#$bstr_num> ......\n";
+
+# Get the rotation matrix of the best view
+system("$X3DNA_BIN/rotate_mol -cb best_str xnmr_tmp.pdb");
+move("rotmat.dat", "rot1.dat") || die "move failed: $!";
+
+# Get the Raster3D input
+if ($opt_s) {
+    system("$X3DNA_BIN/blocview -o -s=$opt_s xnmr_tmp.pdb 2> msg_out");
+} else {
+    system("$X3DNA_BIN/blocview -o xnmr_tmp.pdb 2> msg_out");
+}
+$nmr_all = "nmr_all.r3d";
+move("t.r3d", "$nmr_all") || die "move failed: $!";
+
+open(FOUT, ">>$nmr_all") || die "Can't open file <$nmr_all> for appending: $!\n";
+$nmr_num = 1;                   # best reprt. already counted
+$opt_e = -1 if ($opt_r);         # only handle the best reprt. model
+
+for ($i = $opt_b; $i <= $opt_e; $i++) {
+    system("$X3DNA_BIN/ex_str -$i -nmr $pdbfile xnmr0_tmp.pdb 2> $strname");
+    $numi = nmr_strid();
+    last if ($numi == 0);       # end of the ensemble
+    next if ($numi == $bstr_num); # already counted
+
+    print "Processing NMR model <#$numi> ......\n";
+    system("$X3DNA_BIN/rotate_mol -t=rot1.dat xnmr0_tmp.pdb xnmr_tmp.pdb");
+    system("$X3DNA_BIN/blocview -or xnmr_tmp.pdb 2> msg_out");
+
+    print FOUT "### For NMR model <#$numi>\n"; # no empty lines for RENDER
+    open(FINP, "t.r3d") || die "Can't open file <t.r3d> for reading: $!\n";
+    while (<FINP>) {            # get ride of the 20 header lines
+        next if ($. <= 20);
+        print FOUT;
+    }
+    close(FINP);
+    $nmr_num++;
+}
+print "\nThere are <#$nmr_num> NMR models used in this image\n";
+close(FOUT);
+
+print "\nFinal processing to get the combined image\n";
+system("render < nmr_all.r3d > t.avs");
+
+# Crop the image to its minimum size
+system("convert -crop 0x0 t.avs t.jpg");
+
+# Save image to its designed name
+copy("t.jpg", "$opt_i") if ($opt_i);
+
+# Finally display the image if -d option is given
+system("display t.jpg") if ($opt_d);

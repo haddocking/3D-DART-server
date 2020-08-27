@@ -1,0 +1,71 @@
+#!/usr/bin/perl -w
+use File::Copy;                 # File copy
+
+if (@ARGV != 1 || $ARGV[0] =~ '-') {
+    print <<CP_STD_USAGE;
+===========================================================================
+SYNOPSIS
+    cp_std PDB_DATASET
+DESCRIPTION
+    Selects the standard PDB data files to be used with "analyze"
+    and "rebuild". Available sets include ADNA, BDNA, NDB96 and
+    RNA, which have exactly the same base geometry and orientation
+    but different backbone conformations. Users can also set their
+    own standard file with the "std_base" utility program.
+EXAMPLES
+    cp_std BDNA
+AUTHOR
+    Xiang-Jun Lu in the Laboratory of Wilma K. Olson at Rutgers Univ.
+    Check URL: http://rutchem.rutgers.edu/~xiangjun/3DNA/
+    Report bugs to <xiangjun\@rutchem.rutgers.edu>
+===========================================================================
+CP_STD_USAGE
+    die "\n"
+}
+
+# DIRECTORY CONTAINING 3DNA BINARIES: change this line as appropriate
+$BDIR = $ENV{X3DNA};
+if ($BDIR) {                # X3DNA
+    $BDIR =~ s/.$// if (substr($BDIR, -1) eq '/');
+    $X3DNA = $BDIR;
+} else {
+    $X3DNA = "$ENV{HOME}/X3DNA"; # define it manually
+}
+
+$btype = uc($ARGV[0]);
+if ($btype =~ /BLOCK/) {        # block with thickness = 1 Angstrom
+    $prefix = "$X3DNA//BASEPARS/BLOCK";
+    copy("$prefix/Block_BP1.alc", "Block_BP.alc");
+    copy("$prefix/Block_R1.alc", "Block_R.alc");
+    copy("$prefix/Block_Y1.alc", "Block_Y.alc");
+    die "\n";
+}
+
+@std_bases = <$X3DNA/BASEPARS/ATOMIC/{$btype}_?.pdb>;
+
+system("rm -f Atomic_?.pdb");
+
+foreach (@std_bases) {
+    $base = substr $_, -5, 1;
+    print "$_\n";
+    copy("$_", "Atomic_$base.pdb");
+    copy("$_", "Atomic_\L$base.pdb"); # lower case counterpart
+}
+
+if (!(-e "Atomic_I.pdb" && -e "Atomic_i.pdb")) { # not both I/i.pdb exist
+    open(FG, "Atomic_G.pdb") || die "Can't open Atomic_G.pdb for reading: $!\n";
+    open(FI, ">Atomic_I.pdb") || die "Can't open Atomic_I.pdb for writing: $!\n";
+    $num = 0;
+    while (<FG>) {
+        if (/^ATOM/ || /^HETATM/) {
+            next if (/ N2 /);   # skip N2 atom of G
+            s/  G /  I /;       # change residue name G ---> I
+            $num++;
+            substr($_, 6, 5) = sprintf("%5d", $num);
+        }
+        print FI;
+    }
+    close(FG);
+    close(FI);
+    copy("Atomic_I.pdb", "Atomic_i.pdb");
+}

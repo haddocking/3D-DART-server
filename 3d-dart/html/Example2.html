@@ -1,0 +1,1100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title></title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11029847-4"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-11029847-4');
+	</script>
+	</head>
+	<body>
+		<dl class="intro">
+			<dd class="summary">
+				<img src="./media/DART-logo.png" width="466" height="122" hspace="110">
+			</dd>
+			<dd>
+				For an explanation of the various options please consult the help pages accessible by clicking on the <a href="DARTusage.html" target="_blank">help</a> link available at the bottom right corner of every dialog
+			</dd>
+		</dl>
+		<form method="post" action="/3DDART/cgi/DARTcustombuild.py" enctype="multipart/form-data">
+			<div class="topItem" id="level1">
+				<span id="foldmenup1-title" style="float:right"><img src="arrow-up.png"></span> Step 1. Build Nucleic Acid structure from scratch or base-pair(step) parameter file
+			</div>
+			<div id="foldmenup1" class="switchgroup1">
+				<table width="878">
+					<tr>
+						<td width="488">
+							Give your structure a name
+						</td>
+						<td width="378">
+							<input type="text" name="2.name" value="example2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Provide the nucleic acid sequence (5'-&gt;3')
+						</td>
+						<td>
+							<input type="text" name="2.sequence" size="45" value="TGCAATTGCG">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Number of repeats
+						</td>
+						<td>
+							<input type="text" name="2.repeat" value="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Build from user defined parameter file
+						</td>
+						<td>
+							<input type="file" name="1.uploadpar">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Build from PDB structure file
+						</td>
+						<td>
+							<input type="file" name="1.uploadpdb">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Nucleic acid type
+						</td>
+						<td>
+							<select name="2.type">
+								<option value="BDNA">
+									BDNA
+								</option>
+								<option value="ADNA">
+									ADNA
+								</option>
+								<option value="NDB96">
+									NDB96
+								</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<strong>Generate Calladine-Drew plots (For visualization purposes. In ALCHEMY format)</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							One block per base-pair/base
+						</td>
+						<td>
+							<input type="checkbox" name="2.block1" value="True">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Two blocks per base-pair
+						</td>
+						<td>
+							<input type="checkbox" name="2.block2" value="True">
+						</td>
+					</tr>
+				</table>
+				<p style="text-align:right">
+					<a href="DARTusage.html#buildna" target="_blank">help</a>
+				</p>
+			</div>
+			<div class="topItem" id="level1">
+				<span id="foldmenup2-title" style="float:right"><img src="arrow-up.png"></span> Step 2. Nucleic Acids Modeling options
+			</div>
+			<div id="foldmenup2" class="switchgroup1">
+				<table width="879">
+					<tr>
+						<td width="270">
+							Modelling mode
+						</td>
+						<td width="150">
+							<input type="radio" name="4.global" value="True" checked>Global
+						</td>
+						<td>
+							<input type="radio" name="4.global" value="False">Local
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<strong>Define nucleic acid bending</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Define bend angle range
+						</td>
+						<td>
+							<input type="text" name="4.anglerange" value="30">
+						</td>
+						<td>
+							(global:1-5 or 3,local:3,4,2,3,..)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Define bend-angle step size
+						</td>
+						<td>
+							<input type="text" name="4.anglestep" value="1">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Define bend angle orientation range
+						</td>
+						<td>
+							<input type="text" name="4.orientrange">
+						</td>
+						<td>
+							(global:1-5 or 3,local:3,4,2,3,..)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Define bend angle orientation step size
+						</td>
+						<td>
+							<input type="text" name="4.orientstep">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Define bend zone
+						</td>
+						<td>
+							<input type="text" name="4.anglezone" value="9-12">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Base-pair used as origin in global reference frame.
+						</td>
+						<td>
+							<input type="text" name="4.refbp">
+						</td>
+						<td>
+							(Optional, default is sequence center)
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							&nbsp;
+						</td>
+					</tr>
+				</table>
+				<table width="879">
+					<tr>
+						<td colspan="6">
+							<strong>Define custom values for base-pair step parameters.</strong>
+						</td>
+					</tr>
+					<tr>
+						<td width="118">
+							<div align="center">
+								<span class="p3">Shift</span>
+							</div>
+						</td>
+						<td width="118">
+							<div align="center">
+								<span class="p3">Slide</span>
+							</div>
+						</td>
+						<td width="117">
+							<div align="center">
+								<span class="p3">Rise</span>
+							</div>
+						</td>
+						<td width="112">
+							<div align="center">
+								<span class="p3">Tilt</span>
+							</div>
+						</td>
+						<td width="117">
+							<div align="center">
+								<span class="p3">Roll</span>
+							</div>
+						</td>
+						<td width="145">
+							<div align="center">
+								<span class="p3">Twist</span>
+							</div>
+						</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input name="4.bpstep" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bpstep" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bpstep" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bpstep" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bpstep" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bpstep" type="text" size="10">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<strong>Define custom values for base-pair parameters.</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<span class="p3">Shear</span>
+							</div>
+						</td>
+						<td>
+							<div align="center">
+								<span class="p3">Stretch</span>
+							</div>
+						</td>
+						<td>
+							<div align="center">
+								<span class="p3">Stagger</span>
+							</div>
+						</td>
+						<td>
+							<div align="center">
+								<span class="p3">Buckle</span>
+							</div>
+						</td>
+						<td>
+							<div align="center">
+								<span class="p3">Propeller-Twist</span>
+							</div>
+						</td>
+						<td>
+							<div align="center">
+								<span class="p3">Opening</span>
+							</div>
+						</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input name="4.bp" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bp" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bp" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bp" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bp" type="text" size="10">
+						</td>
+						<td>
+							<input name="4.bp" type="text" size="10">
+						</td>
+					</tr>
+				</table>
+				<p style="text-align:right">
+					<a href="DARTusage.html#modelna" target="_blank">help</a>
+				</p>
+			</div>
+			<div class="topItem" id="level1">
+				<span id="foldmenu_superheader1-title" style="float:right"><img src="arrow-down.png"></span> Step 3. PDB formating options
+			</div>
+			<div id="foldmenu_superheader1" class="switchgroup1">
+				<table width="879">
+					<tr>
+						<td width="270">
+							Convert IUPAC to CNS notation
+						</td>
+						<td width="150">
+							<input type="checkbox" name="8.IUPACtoCNS" value="True">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Convert nucleic acid 1 letter to 3 letter notation
+						</td>
+						<td>
+							<input type="checkbox" name="8.NA1to3" value="True">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Set PDB chain id
+						</td>
+						<td>
+							<input type="text" name="8.setchainID" value="C">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Renumber residues starting from
+						</td>
+						<td>
+							<input type="text" name="8.reres">
+						</td>
+					</tr>
+				</table>
+				<p style="text-align:right">
+					<a href="DARTusage.html#formatpdb" target="_blank">help</a>
+				</p>
+			</div>
+			<div class="topItem" id="level1">
+				<span id="foldmenu_superheader2-title" style="float:right"><img src="arrow-down.png"></span> Step 4. For HADDOCK users
+			</div>
+			<div id="foldmenu_superheader2" class="switchgroup1">
+				<table width="879">
+					<tr>
+						<td width="270">
+							Make PDB HADDOCK ready
+						</td>
+						<td width="150">
+							<input type="checkbox" name="8.pdb2haddock" value="True">
+						</td>
+					</tr>
+				</table>
+				<div class="topItem" id="level2">
+					<span id="foldmenu_superheader8-title" style="float:right"><img src="arrow-down.png"></span> DNA/RNA restraints file
+				</div>
+				<div id="foldmenu_superheader8" class="switchgroup1">
+					<table width="879">
+						<tr>
+							<td width="488">
+								Setup the DNA/RNA restraint file for use in HADDOCK
+							</td>
+							<td width="379">
+								<input type="checkbox" name="9.useplugin" value="True">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<strong>Planarity restraints</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="488">
+								Use Watson-Crick base-pair planarity
+							</td>
+							<td width="378">
+								<input type="checkbox" name="9.bpplan" value="True">
+							</td>
+						</tr>
+						<tr>
+							<td width="488">
+								Use base planarity
+							</td>
+							<td width="378">
+								<input type="checkbox" name="9.bplan" value="True" checked>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<strong>Watson-Crick base-pair restraints</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="488">
+								Pick Watson-Crick H-bond restraint values from structure
+							</td>
+							<td width="378">
+								<input type="checkbox" name="9.pickwc" value="True" checked>
+							</td>
+						</tr>
+						<tr>
+							<td width="488">
+								Lower H-bond error range limit
+							</td>
+							<td width="200">
+								<input type="text" name="9.wc_low" value="0.05">
+							</td>
+						</tr>
+						<tr>
+							<td width="488">
+								Upper H-bond error range limit
+							</td>
+							<td width="200">
+								<input type="text" name="9.wc_up" value="0.05">
+							</td>
+						</tr>
+					</table>
+					<div class="topItem" id="level3">
+						<span id="foldmenupuck-title" style="float:right"><img src="arrow-down.png"></span> Set sugar-pucker dihedral angle restraints
+					</div>
+					<div id="foldmenupuck" class="switchgroup1">
+						<table width="879">
+							<tr>
+								<td width="488">
+									Pick the dihedral angles of the sugar pucker from the input structure (automatic restraint definition)
+								</td>
+								<td width="378">
+									<input type="checkbox" name="9.pickpuck" value="True" checked>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<strong>In case of manual restraint definition define the conformational groups below</strong>
+								</td>
+							</tr>
+						</table>
+						<div class="topItem" id="level4">
+							<span id="foldmenupuck_group1-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 1
+						</div>
+						<div id="foldmenupuck_group1" class="switchgroup1">
+							<table>
+								<tr>
+									<td width="488">
+										Conformation of group 1
+									</td>
+									<td width="378">
+										<select name="9.pform_1">
+											<option value="b-form">
+												B-form
+											</option>
+											<option value="a-form">
+												A-form
+											</option>
+											<option value="other">
+												User defined
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										Start residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.puck_1_start">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										End residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.puck_1_end">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										User defined pucker restraints for group 1 (angle average and error range)
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C1'-C2'-C3'-C4'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_1_nu2" value="-34.9">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_1_nu2err" value="0.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C5'-C4'-C3'-C2'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_1_nu3" value="-86.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_1_nu3err" value="0.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C1'-O4'-C4'-C5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_1_nu4" value="106.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_1_nu4err" value="0.0">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="topItem" id="level4">
+							<span id="foldmenupuck_group2-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 2
+						</div>
+						<div id="foldmenupuck_group2" class="switchgroup1">
+							<table>
+								<tr>
+									<td width="488">
+										Conformation of group 2
+									</td>
+									<td width="378">
+										<select name="9.pform_2">
+											<option value="b-form">
+												B-form
+											</option>
+											<option value="a-form">
+												A-form
+											</option>
+											<option value="other">
+												User defined
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										Start residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.puck_2_start">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										End residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.puck_2_end">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										User defined pucker restraints for group 2 (angle average and error range)
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C1'-C2'-C3'-C4'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_2_nu2" value="-34.9">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_2_nu2err" value="0.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C5'-C4'-C3'-C2'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_2_nu3" value="-86.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_2_nu3err" value="0.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C1'-O4'-C4'-C5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_2_nu4" value="106.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_2_nu4err" value="0.0">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="topItem" id="level4">
+							<span id="foldmenupuck_group3-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 3
+						</div>
+						<div id="foldmenupuck_group3" class="switchgroup1">
+							<table>
+								<tr>
+									<td width="488">
+										Conformation of group 3
+									</td>
+									<td width="378">
+										<select name="9.pform_3">
+											<option value="b-form">
+												B-form
+											</option>
+											<option value="a-form">
+												A-form
+											</option>
+											<option value="other">
+												User defined
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										Start residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.puck_3_start">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										End residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.puck_3_end">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										User defined pucker restraints for group 3 (angle average and error range)
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C1'-C2'-C3'-C4'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_3_nu2" value="-34.9">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_3_nu2err" value="0.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C5'-C4'-C3'-C2'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_3_nu3" value="-86.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_3_nu3err" value="0.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										dihedral C1'-O4'-C4'-C5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_3_nu4" value="106.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.puck_3_nu4err" value="0.0">
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="topItem" id="level3">
+						<span id="foldmenuback-title" style="float:right"><img src="arrow-down.png"></span> Set phosphate backbone dihedral angle restraints
+					</div>
+					<div id="foldmenuback" class="switchgroup1">
+						<table>
+							<tr>
+								<td width="488">
+									Pick the dihedral angles of the phosphate backbone from the input structure (automatic restraint definition)
+								</td>
+								<td width="378">
+									<input type="checkbox" name="9.pickbackdih" value="True" checked>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<strong>In case of manual restraint definition define the conformational groups below</strong>
+								</td>
+							</tr>
+						</table>
+						<div class="topItem" id="level4">
+							<span id="foldmenuback_group1-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 1
+						</div>
+						<div id="foldmenuback_group1" class="switchgroup1">
+							<table>
+								<tr>
+									<td width="488">
+										Conformation of group 1
+									</td>
+									<td width="378">
+										<select name="9.dform_1">
+											<option value="b-form">
+												B-form
+											</option>
+											<option value="a-form">
+												A-form
+											</option>
+											<option value="other">
+												User defined
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										Start residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.dih_1_start">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										End residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.dih_1_end">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										User defined phosphate backbone restraints for group 1 (angle average and error range)
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										alpha dihedral O3'-P-O5'-C5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_alpha" value="-10.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_alphaerr" value="10.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										beta dihedral P-O5'-C5'-C4'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_beta" value="136.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_betaerr" value="40.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										gamma dihedral O5'-C5'-C4'-C3'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_gamma" value="31.1">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_gammaerr" value="20.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										delta dihedral C5'-C4'-C3'-O3'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_delta" value="-165.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_deltaerr" value="50.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										epsilon dihedral C4'-C3'-O3'-P
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_eps" value="-165.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_epserr" value="10.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										zeta dihedral C3'-O3'-P-O5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_zeta" value="-150.8">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_1_zetaerr" value="50.0">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="topItem" id="level4">
+							<span id="foldmenuback_group2-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 2
+						</div>
+						<div id="foldmenuback_group2" class="switchgroup1">
+							<table>
+								<tr>
+									<td width="488">
+										Conformation of group 2
+									</td>
+									<td width="378">
+										<select name="9.dform_2">
+											<option value="b-form">
+												B-form
+											</option>
+											<option value="a-form">
+												A-form
+											</option>
+											<option value="other">
+												User defined
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										Start residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.dih_2_start">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										End residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.dih_2_end">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										User defined phosphate backbone restraints for group 2 (angle average and error range)
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										alpha dihedral O3'-P-O5'-C5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_alpha" value="-10.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_alphaerr" value="10.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										beta dihedral P-O5'-C5'-C4'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_beta" value="136.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_betaerr" value="40.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										gamma dihedral O5'-C5'-C4'-C3'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_gamma" value="31.1">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_gammaerr" value="20.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										delta dihedral C5'-C4'-C3'-O3'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_delta" value="-165.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_deltaerr" value="50.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										epsilon dihedral C4'-C3'-O3'-P
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_eps" value="-165.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_epserr" value="10.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										zeta dihedral C3'-O3'-P-O5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_zeta" value="-150.8">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_2_zetaerr" value="50.0">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="topItem" id="level4">
+							<span id="foldmenuback_group3-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 3
+						</div>
+						<div id="foldmenuback_group3" class="switchgroup1">
+							<table>
+								<tr>
+									<td width="488">
+										Conformation of group 3
+									</td>
+									<td width="378">
+										<select name="9.dform_3">
+											<option value="b-form">
+												B-form
+											</option>
+											<option value="a-form">
+												A-form
+											</option>
+											<option value="other">
+												User defined
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										Start residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.dih_3_start">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										End residue
+									</td>
+									<td width="378">
+										<input type="text" name="9.dih_3_end">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										User defined phosphate backbone restraints for group 3 (angle average and error range)
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										alpha dihedral O3'-P-O5'-C5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_alpha" value="-10.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_alphaerr" value="10.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										beta dihedral P-O5'-C5'-C4'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_beta" value="136.4">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_betaerr" value="40.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										gamma dihedral O5'-C5'-C4'-C3'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_gamma" value="31.1">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_gammaerr" value="20.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										delta dihedral C5'-C4'-C3'-O3'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_delta" value="-165.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_deltaerr" value="50.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										epsilon dihedral C4'-C3'-O3'-P
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_eps" value="-165.0">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_epserr" value="10.0">
+									</td>
+								</tr>
+								<tr>
+									<td width="488">
+										zeta dihedral C3'-O3'-P-O5'
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_zeta" value="-150.8">
+									</td>
+									<td width="200">
+										<input type="text" name="9.dih_3_zetaerr" value="50.0">
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<p style="text-align:right">
+					<a href="DARTusage.html#haddock" target="_blank">help</a>
+				</p>
+			</div><br>
+			<center>
+				<input type="reset" name="reset"> <input type="submit" name="NAcustombuild.xml" value="submit">
+			</center>
+		</form>
+		<dl class="textblock">
+			<dd class="summary" style="text-align:center">
+				Depending on your settings the job may take up to one minute to finish. Do not close this window you will be shortly prompted with the download location of your data
+			</dd>
+		</dl>
+	</body>
+</html>
