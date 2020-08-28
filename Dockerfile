@@ -28,7 +28,7 @@ RUN mkdir -p /var/www/html/3DDART/error && chown -R www-data:www-data /var/www/h
 RUN ln -s /var/www/html/3DDART/server/server-tmp/software /var/www/html/3DDART/software
 
 ENV X3DNA=/var/www/html/3DDART/server/server-tmp/software/X3DNA-linux
-ENV PATH=$PATH:/var/www/html/3DDART/server/server-tmp/software/X3DNA-linux/bin
+ENV PATH=$PATH:/var/www/html/3DDART/server/server-tmp/software/X3DNA-linux/bin:/var/www/html/3DDART/server
 
 EXPOSE 80
 
