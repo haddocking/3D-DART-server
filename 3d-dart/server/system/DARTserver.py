@@ -30,7 +30,6 @@ import time
 import commands
 from Xpath import Xpath
 from Constants import *
-from ssoxs_connect import ssoxs_connect
 
 
 class WebServer:
