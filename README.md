@@ -41,7 +41,7 @@ docker run --name 3ddart -p 80:80 -i -t 3d-dart
 
 Once the docker container is running, 3D-DART server will be available from the url [http://127.0.0.1](http://127.0.0.1):
 
-![DARTCustombuild](img/DARTCustombuild.png)
+![DARTCustombuild](img/DARTcustombuild.png)
 
 This is the default interface, `DARTCustombuild`. There are several examples of this form pre-filled in the following urls:
 
@@ -56,7 +56,7 @@ For example, this is Example1.html:
 
 Once input data is filled and `Submit` button clicked, you will be redirected to the results page:
 
-![DARTResult](img/DARTResult.png)
+![DARTResult](img/DARTresult.png)
 
 Server results are also available through this link: [http://127.0.0.1/3DDART/server/results/](http://127.0.0.1/3DDART/server/results/).
 
