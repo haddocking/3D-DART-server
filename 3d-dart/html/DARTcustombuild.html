@@ -1,9 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 	<head>
-		<title></title>
+		<title>3D-DART Server</title>
+		<link rel="stylesheet" type="text/css" href="./css/mainstyle-CSB.css"/>
+ 
+		<!-- Page specific modification to the general CSS style -->
+		<style type="text/css">
+			.blue body { background-image:url("/Images/body-background.gif"); }
+			.blue #path { background-image:url("/Images/path-blue.png"); }
+			.blue #header { height:150px; background-image:url("/Images/header-CSB.jpg"); }
+			.blue #navbar { background-image:url("/Images/navbar-blue.png"); }
+			.blue #navbar a:hover { background-image:url("/Images/navbarshadow-blue.png"); }
+			.blue #navbar .current a {background-image:url("/Images/navbarshadow-blue2.png"); }
+			.blue #subheader { background-image:url("/Images/subheader-blue-new.png"); }
+			.blue #footer { background:#d9e6f2; }
+			.blue #subheader span, #subheadersidebar { color:#001A3B }
+			.blue .topItem  { background-color:#001C47 }
+			.blue .container { background:#FFFFFF }
+			.blue {color: #CCFFFF}
+		</style>
+		<!-- Foldable menu script -->
+		<script type="text/javascript" src="./js/switchcontent.js"></script>
 	</head>
-	
+
 	<body>
 		<dl class="intro">
 			<dd class="summary">
@@ -20,7 +39,7 @@
 		</dl>
 		<form method="post" action="/3DDART/cgi/DARTcustombuild.py" enctype="multipart/form-data">
 			<div class="topItem" id="level1">
-				<span id="foldmenup1-title" style="float:right"><img src="arrow-up.png"></span> Step 1. Build Nucleic Acid structure from scratch or base-pair(step) parameter file
+				<span id="foldmenup1-title" style="float:right"><img src="./media/arrow-up.png"></span> Step 1. Build Nucleic Acid structure from scratch or base-pair(step) parameter file
 			</div>
 			<div id="foldmenup1" class="switchgroup1">
 				<table width="878">
@@ -114,7 +133,7 @@
 				</p>
 			</div>
 			<div class="topItem" id="level1">
-				<span id="foldmenup2-title" style="float:right"><img src="arrow-up.png"></span> Step 2. Nucleic Acids Modeling options
+				<span id="foldmenup2-title" style="float:right"><img src="./media/arrow-up.png"></span> Step 2. Nucleic Acids Modeling options
 			</div>
 			<div id="foldmenup2" class="switchgroup1">
 				<table width="879">
@@ -340,7 +359,7 @@
 			</div>
 			<div class="topItem" id="level1">
 				<span id="foldmenu_superheader1-title" style="float:right"><img 
-src="arrow-down.png"></span> Step 3. PDB formatting options
+src="./media/arrow-down.png"></span> Step 3. PDB formatting options
 			</div>
 			<div id="foldmenu_superheader1" class="switchgroup1">
 				<table width="879">
@@ -382,7 +401,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 				</p>
 			</div>
 			<div class="topItem" id="level1">
-				<span id="foldmenu_superheader2-title" style="float:right"><img src="arrow-down.png"></span> Step 4. For HADDOCK users
+				<span id="foldmenu_superheader2-title" style="float:right"><img src="./media/arrow-down.png"></span> Step 4. For HADDOCK users
 			</div>
 			<div id="foldmenu_superheader2" class="switchgroup1">
 				<table width="879">
@@ -396,7 +415,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 					</tr>
 				</table>
 				<div class="topItem" id="level2">
-					<span id="foldmenu_superheader8-title" style="float:right"><img src="arrow-down.png"></span> DNA/RNA restraints file
+					<span id="foldmenu_superheader8-title" style="float:right"><img src="./media/arrow-down.png"></span> DNA/RNA restraints file
 				</div>
 				<div id="foldmenu_superheader8" class="switchgroup1">
 					<table width="879">
@@ -470,7 +489,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 						</tr>
 					</table>
 					<div class="topItem" id="level3">
-						<span id="foldmenupuck-title" style="float:right"><img src="arrow-down.png"></span> Set sugar-pucker dihedral angle restraints
+						<span id="foldmenupuck-title" style="float:right"><img src="./media/arrow-down.png"></span> Set sugar-pucker dihedral angle restraints
 					</div>
 					<div id="foldmenupuck" class="switchgroup1">
 						<table width="879">
@@ -494,7 +513,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 							</tr>
 						</table>
 						<div class="topItem" id="level4">
-							<span id="foldmenupuck_group1-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 1
+							<span id="foldmenupuck_group1-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 1
 						</div>
 						<div id="foldmenupuck_group1" class="switchgroup1">
 							<table>
@@ -573,7 +592,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenupuck_group2-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 2
+							<span id="foldmenupuck_group2-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 2
 						</div>
 						<div id="foldmenupuck_group2" class="switchgroup1">
 							<table>
@@ -652,7 +671,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenupuck_group3-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 3
+							<span id="foldmenupuck_group3-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 3
 						</div>
 						<div id="foldmenupuck_group3" class="switchgroup1">
 							<table>
@@ -732,7 +751,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 						</div>
 					</div>
 					<div class="topItem" id="level3">
-						<span id="foldmenuback-title" style="float:right"><img src="arrow-down.png"></span> Set phosphate backbone dihedral angle restraints
+						<span id="foldmenuback-title" style="float:right"><img src="./media/arrow-down.png"></span> Set phosphate backbone dihedral angle restraints
 					</div>
 					<div id="foldmenuback" class="switchgroup1">
 						<table>
@@ -756,7 +775,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 							</tr>
 						</table>
 						<div class="topItem" id="level4">
-							<span id="foldmenuback_group1-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 1
+							<span id="foldmenuback_group1-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 1
 						</div>
 						<div id="foldmenuback_group1" class="switchgroup1">
 							<table>
@@ -868,7 +887,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenuback_group2-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 2
+							<span id="foldmenuback_group2-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 2
 						</div>
 						<div id="foldmenuback_group2" class="switchgroup1">
 							<table>
@@ -980,7 +999,7 @@ src="arrow-down.png"></span> Step 3. PDB formatting options
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenuback_group3-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 3
+							<span id="foldmenuback_group3-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 3
 						</div>
 						<div id="foldmenuback_group3" class="switchgroup1">
 							<table>
