@@ -208,8 +208,9 @@ class DartCustomBuild(object):
 				environment.append("%s: %s\n" % (x, os.environ[x]))
 		return environment			
 
-	def dartDownload(self,filepath=None):
+	def dartDownload(self, filepath=None):
 		"""Present the download path of the data to the user"""
+		print('Status: 303 See other')
 		print('Location: %s/DARTresult.html?loc=%s\n' % (HTTPDIR, filepath))
 
 

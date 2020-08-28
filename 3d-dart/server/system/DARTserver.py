@@ -461,7 +461,7 @@ class WebServer:
 			# Clean the FTP site for jobs older then CLEANTIME
 			self.CleanJobs()
 			
-			downloadpath = os.path.join(FTP_LOCATION, package)
+			downloadpath = os.path.join(RESULTS_LOCATION, package)
 			
 			# Report download location to user
 			return downloadpath

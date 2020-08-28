@@ -46,5 +46,5 @@ MAXMODELS       = 250
 # Time before users results will be deleted from server, 5 days in seconds
 CLEANTIME		= 432000
 PYTHON			= '/usr/bin/python2.7'
-FTP_LOCATION    = 'http://127.0.0.1/3DDART/server/results/'
+RESULTS_LOCATION    = '/3DDART/server/results/'
 SERVERCOUNTFILE = '/var/www/html/3DDART/server/server-tmp/SERVERCOUNTFILE'
