@@ -1,7 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>3D-DART Server - Example 3</title>
+		<link rel="stylesheet" type="text/css" href="./css/mainstyle-CSB.css"/>
+ 
+		<!-- Page specific modification to the general CSS style -->
+		<style type="text/css">
+			.blue #header { height:150px; }
+			.blue #footer { background:#d9e6f2; }
+			.blue #subheader span, #subheadersidebar { color:#001A3B }
+			.blue .topItem  { background-color:#001C47 }
+			.blue .container { background:#FFFFFF }
+			.blue {color: #CCFFFF}
+		</style>
+		<!-- Foldable menu script -->
+		<script type="text/javascript" src="./js/switchcontent.js"></script>
 	</head>
 	<body>
 		<dl class="intro">
@@ -14,7 +28,7 @@
 		</dl>
 		<form method="post" action="/3DDART/cgi/DARTcustombuild.py" enctype="multipart/form-data">
 			<div class="topItem" id="level1">
-				<span id="foldmenup1-title" style="float:right"><img src="arrow-up.png"></span> Step 1. Build Nucleic Acid structure from scratch or base-pair(step) parameter file
+				<span id="foldmenup1-title" style="float:right"><img src="./media/arrow-up.png"></span> Step 1. Build Nucleic Acid structure from scratch or base-pair(step) parameter file
 			</div>
 			<div id="foldmenup1" class="switchgroup1">
 				<table width="878">
@@ -108,7 +122,7 @@
 				</p>
 			</div>
 			<div class="topItem" id="level1">
-				<span id="foldmenup2-title" style="float:right"><img src="arrow-up.png"></span> Step 2. Nucleic Acids Modeling options
+				<span id="foldmenup2-title" style="float:right"><img src="./media/arrow-up.png"></span> Step 2. Nucleic Acids Modeling options
 			</div>
 			<div id="foldmenup2" class="switchgroup1">
 				<table width="879">
@@ -322,7 +336,7 @@
 				</p>
 			</div>
 			<div class="topItem" id="level1">
-				<span id="foldmenu_superheader1-title" style="float:right"><img src="arrow-down.png"></span> Step 3. PDB formating options
+				<span id="foldmenu_superheader1-title" style="float:right"><img src="./media/arrow-down.png"></span> Step 3. PDB formating options
 			</div>
 			<div id="foldmenu_superheader1" class="switchgroup1">
 				<table width="879">
@@ -364,7 +378,7 @@
 				</p>
 			</div>
 			<div class="topItem" id="level1">
-				<span id="foldmenu_superheader2-title" style="float:right"><img src="arrow-down.png"></span> Step 4. For HADDOCK users
+				<span id="foldmenu_superheader2-title" style="float:right"><img src="./media/arrow-down.png"></span> Step 4. For HADDOCK users
 			</div>
 			<div id="foldmenu_superheader2" class="switchgroup1">
 				<table width="879">
@@ -378,7 +392,7 @@
 					</tr>
 				</table>
 				<div class="topItem" id="level2">
-					<span id="foldmenu_superheader8-title" style="float:right"><img src="arrow-down.png"></span> DNA/RNA restraints file
+					<span id="foldmenu_superheader8-title" style="float:right"><img src="./media/arrow-down.png"></span> DNA/RNA restraints file
 				</div>
 				<div id="foldmenu_superheader8" class="switchgroup1">
 					<table width="879">
@@ -452,7 +466,7 @@
 						</tr>
 					</table>
 					<div class="topItem" id="level3">
-						<span id="foldmenupuck-title" style="float:right"><img src="arrow-down.png"></span> Set sugar-pucker dihedral angle restraints
+						<span id="foldmenupuck-title" style="float:right"><img src="./media/arrow-down.png"></span> Set sugar-pucker dihedral angle restraints
 					</div>
 					<div id="foldmenupuck" class="switchgroup1">
 						<table width="879">
@@ -476,7 +490,7 @@
 							</tr>
 						</table>
 						<div class="topItem" id="level4">
-							<span id="foldmenupuck_group1-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 1
+							<span id="foldmenupuck_group1-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 1
 						</div>
 						<div id="foldmenupuck_group1" class="switchgroup1">
 							<table>
@@ -555,7 +569,7 @@
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenupuck_group2-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 2
+							<span id="foldmenupuck_group2-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 2
 						</div>
 						<div id="foldmenupuck_group2" class="switchgroup1">
 							<table>
@@ -634,7 +648,7 @@
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenupuck_group3-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 3
+							<span id="foldmenupuck_group3-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 3
 						</div>
 						<div id="foldmenupuck_group3" class="switchgroup1">
 							<table>
@@ -714,7 +728,7 @@
 						</div>
 					</div>
 					<div class="topItem" id="level3">
-						<span id="foldmenuback-title" style="float:right"><img src="arrow-down.png"></span> Set phosphate backbone dihedral angle restraints
+						<span id="foldmenuback-title" style="float:right"><img src="./media/arrow-down.png"></span> Set phosphate backbone dihedral angle restraints
 					</div>
 					<div id="foldmenuback" class="switchgroup1">
 						<table>
@@ -738,7 +752,7 @@
 							</tr>
 						</table>
 						<div class="topItem" id="level4">
-							<span id="foldmenuback_group1-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 1
+							<span id="foldmenuback_group1-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 1
 						</div>
 						<div id="foldmenuback_group1" class="switchgroup1">
 							<table>
@@ -850,7 +864,7 @@
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenuback_group2-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 2
+							<span id="foldmenuback_group2-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 2
 						</div>
 						<div id="foldmenuback_group2" class="switchgroup1">
 							<table>
@@ -962,7 +976,7 @@
 							</table>
 						</div>
 						<div class="topItem" id="level4">
-							<span id="foldmenuback_group3-title" style="float:right"><img src="arrow-down.png"></span> Conformation of group 3
+							<span id="foldmenuback_group3-title" style="float:right"><img src="./media/arrow-down.png"></span> Conformation of group 3
 						</div>
 						<div id="foldmenuback_group3" class="switchgroup1">
 							<table>
