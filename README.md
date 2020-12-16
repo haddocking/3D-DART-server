@@ -8,6 +8,8 @@
 
 ### 1.1. Build Docker container
 
+**Note:** if using git on Windows, please make sure **automatic conversion of EOL is set to `false`** to avoid mixing `\r` and `\n` end of lines: `git config --global core.autocrlf false`.
+
 ```bash
 cd 3D-DART-server
 docker build -t 3d-dart .
